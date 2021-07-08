@@ -121,10 +121,12 @@ test('renders all fields text when all fields are submitted.', async () => {
     userEvent.type(firstNameInput, "Jonathan");
     userEvent.type(lastNameInput, "Edwards");
     userEvent.type(emailInput, "bob@bob.com");
-    userEvent.type(emailInput, "Message Text");
+    userEvent.type(messageInput, "Message Text");
     userEvent.click(submitInput);
 
-    render(<DisplayComponent form={{firstName: "Jonathan", lastName: "Edwards", email: "bob@bob.com", message: 'Message Text'}}/>)
+    console.log("emailInput.value: ", emailInput.value);
+
+    render(<DisplayComponent form={{firstName: firstNameInput.value, lastName: lastNameInput.value, email: emailInput.value, message: messageInput.value}}/>)
  
     const firstNameDisplay = screen.getAllByTestId("firstnameDisplay");
     const lastNameDisplay = screen.getAllByTestId("lastnameDisplay");
